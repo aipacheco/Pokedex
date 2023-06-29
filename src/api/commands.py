@@ -1,4 +1,3 @@
-
 import click
 from api.models.index import db, User
 
