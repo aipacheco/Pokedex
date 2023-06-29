@@ -1,6 +1,5 @@
 from flask import jsonify
 
-
 def error(msg, status_code):
     return jsonify({
         "msg": msg,
