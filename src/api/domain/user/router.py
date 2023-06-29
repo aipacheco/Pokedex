@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from ...models.index import User
 from ..user import controller as Controller
-from ...handle_response import handle_response
+import handle_response 
 
 Response = handle_response()
 
-api = Blueprint('api/user', __name__)
+api_user = Blueprint('api/user', __name__)
 
-@api.route('/', methods=['POST'])
+@api_user.route('/', methods=['POST'])
 def create_user():
     body = request.get_json()
     new_user = Controller.create_user(body)
