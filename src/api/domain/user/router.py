@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
 from ...models.index import User
 from ..user import controller as Controller
-from ...handle_response import handle_response as Response
+from api.handle_response import handle_response as Response
 
 
 api = Blueprint('api/user', __name__)
