@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from ....models.index import User
+from ...models.index import User
 from ..user import controller as Controller
 import api.handle_response as Response
 

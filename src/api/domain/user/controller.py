@@ -1,6 +1,6 @@
-import api.domain.user.repository as Repository
+from ..user import repository as Repository
+from ...functions import hash_pass, verify_user
 import bcrypt
-from api.functions import hash_pass, verify_user
 
 def create_user(new_user):
     correct_user = verify_user(new_user)

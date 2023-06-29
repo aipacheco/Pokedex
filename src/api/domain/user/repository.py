@@ -1,4 +1,4 @@
-from api.models.index import db, User
+from ...models.index import User, db
 
 
 def create_user(email, password):
