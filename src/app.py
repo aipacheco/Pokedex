@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
-from api.utils import APIException, generate_sitemap
+# from api.utils import APIException, generate_sitemap
 from api.models.index import db
 import api.domain.user.router  as api_user
 from api.admin import setup_admin
@@ -17,6 +17,7 @@ from flask_jwt_extended import JWTManager
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
@@ -47,25 +48,25 @@ setup_commands(app)
 app.register_blueprint(api_user.api, url_prefix='/api/user')
 
 # Handle/serialize errors like a JSON object
-@app.errorhandler(APIException)
-def handle_invalid_usage(error):
-    return jsonify(error.to_dict()), error.status_code
+# @app.errorhandler(APIException)
+# def handle_invalid_usage(error):
+#     return jsonify(error.to_dict()), error.status_code
 
-# generate sitemap with all your endpoints
-@app.route('/')
-def sitemap():
-    if ENV == "development":
-        return generate_sitemap(app)
-    return send_from_directory(static_file_dir, 'index.html')
+# # generate sitemap with all your endpoints
+# @app.route('/')
+# def sitemap():
+#     if ENV == "development":
+#         return generate_sitemap(app)
+#     return send_from_directory(static_file_dir, 'index.html')
 
-# any other endpoint will try to serve it like a static file
-@app.route('/<path:path>', methods=['GET'])
-def serve_any_other_file(path):
-    if not os.path.isfile(os.path.join(static_file_dir, path)):
-        path = 'index.html'
-    response = send_from_directory(static_file_dir, path)
-    response.cache_control.max_age = 0 # avoid cache memory
-    return response
+# # any other endpoint will try to serve it like a static file
+# @app.route('/<path:path>', methods=['GET'])
+# def serve_any_other_file(path):
+#     if not os.path.isfile(os.path.join(static_file_dir, path)):
+#         path = 'index.html'
+#     response = send_from_directory(static_file_dir, path)
+#     response.cache_control.max_age = 0 # avoid cache memory
+#     return response
 
 
 # this only runs if `$ python src/main.py` is executed
