@@ -1,0 +1,11 @@
+.card{
+    background-color:rgba(116, 144, 130, 0.3) !important;
+    border-radius: 15px;
+    border-color: limegreen;
+}
+.col-card:hover{
+    transform: scale(1.1)
+}
+.card-img-top{
+    filter: drop-shadow(5px 3px 1px #224A20);
+}
