@@ -4,10 +4,10 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 # from api.utils import APIException, generate_sitemap
-from .api.models.index import db
-from .api.domain.user.router import api
-from .api.admin import setup_admin
-from .api.commands import setup_commands
+from api.models.index import db
+from api.domain.user.router import api
+from api.admin import setup_admin
+from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 
 
